@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRTS_Telemetry", "SRTS_Telemetry\SRTS_Telemetry.csproj", "{FB3DC237-9A1A-4242-9FAA-14D2C27C8A64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRTS_TelemetryConsoleApp", "SRTS_TelemetryConsoleApp\SRTS_TelemetryConsoleApp.csproj", "{B106B9CE-BD33-4711-9100-0226A220D873}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimRacingTelemetryLogger", "SimRacingTelemetryLogger\SimRacingTelemetryLogger.csproj", "{203EEB9F-4794-40AB-B7A7-BDE0D1D0EF82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB3DC237-9A1A-4242-9FAA-14D2C27C8A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB3DC237-9A1A-4242-9FAA-14D2C27C8A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB3DC237-9A1A-4242-9FAA-14D2C27C8A64}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FB3DC237-9A1A-4242-9FAA-14D2C27C8A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB3DC237-9A1A-4242-9FAA-14D2C27C8A64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB3DC237-9A1A-4242-9FAA-14D2C27C8A64}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B106B9CE-BD33-4711-9100-0226A220D873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B106B9CE-BD33-4711-9100-0226A220D873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B106B9CE-BD33-4711-9100-0226A220D873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B106B9CE-BD33-4711-9100-0226A220D873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203EEB9F-4794-40AB-B7A7-BDE0D1D0EF82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203EEB9F-4794-40AB-B7A7-BDE0D1D0EF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203EEB9F-4794-40AB-B7A7-BDE0D1D0EF82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203EEB9F-4794-40AB-B7A7-BDE0D1D0EF82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65D67788-CAA9-4C69-80A6-981A8D051961}
+	EndGlobalSection
+EndGlobal

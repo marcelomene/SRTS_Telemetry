@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SRTS_Telemetry.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SRTS_Telemetry"
+    xmlns:pages="clr-namespace:SRTS_Telemetry.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    
+    Title="SRTS GT7 Telemetry">
+
+    <TabBar>
+        <ShellContent Title="Home"
+                      Icon="home.png"
+                      Route="home"
+                      ContentTemplate="{DataTemplate local:MainPage}" />
+
+        <ShellContent Title="HUD"
+                      Icon="gauge.png"
+                      Route="hud"
+                      ContentTemplate="{DataTemplate pages:HudPage}" />
+    </TabBar>
+</Shell>

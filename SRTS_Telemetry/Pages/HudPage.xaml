@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SRTS_Telemetry.Pages.HudPage"
+             Title="HUD">
+    <Border>
+        <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!-- LEFT COLUMN -->
+        <Border Grid.Row="0" Grid.Column="0">
+            <StackLayout>
+                   <Label Text="{Binding RPM}" TextColor="White" 
+                   FontAttributes="Bold" 
+                   FontAutoScalingEnabled="True" 
+                   FontSize="Header"
+                   Margin="0,35,0,0"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+                <Label Text="RPM" TextColor="Blue" 
+                   FontAttributes="Bold" 
+                   FontAutoScalingEnabled="True" 
+                   FontSize="Header"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="0">
+            <StackLayout>
+                <BoxView
+                    x:Name="throttleBoxview"
+                    Margin="0,35,0,0"
+                    BackgroundColor="Green"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    HeightRequest="50"
+                    WidthRequest="300"/>
+                    <Label Text="{Binding Throttle}" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                <Label Text="THROTTLE" TextColor="Blue" 
+                   FontAttributes="Bold" 
+                   FontAutoScalingEnabled="True" 
+                   FontSize="Header"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="0">
+            <StackLayout>
+                <BoxView
+                     x:Name="brakeBoxview"
+                     Margin="0,35,0,0"
+                     BackgroundColor="Red"
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     HeightRequest="50"
+                     WidthRequest="300"/>
+                    <Label Text="{Binding Brake}" TextColor="White" 
+                       FontAttributes="Bold" 
+                       FontAutoScalingEnabled="True" 
+                       FontSize="Medium"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                <Label Text="BRAKE" TextColor="Blue" 
+                       FontAttributes="Bold" 
+                       FontAutoScalingEnabled="True" 
+                       FontSize="Header"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </Border>
+        
+        <!-- CENTER COLUMN -->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <StackLayout>
+                <Border>
+                    <StackLayout>
+                        <Label Text="{Binding BestLap}" TextColor="White" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                            <Label Text="BEST LAP" TextColor="Magenta" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Default"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </Border>
+                <Border>
+                    <StackLayout>
+                        <Label Text="{Binding LastLap}" TextColor="White" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                        <Label Text="LAST LAP" TextColor="Magenta" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Default"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </Border>
+                </StackLayout>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="{Binding Speed}" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Header"
+                    Margin="0,25,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="KM/H" TextColor="Cyan" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Header"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <StackLayout>
+                <StackLayout>
+                        <Label Text="{Binding Gear}" TextColor="White" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Header"
+                        Margin="0,25,0,0"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                    <Label Text="GEAR" TextColor="Cyan" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Header"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        
+        <!-- RIGHT COLUMN -->
+        <Border Grid.Row="0" Grid.Column="2">
+            <StackLayout>
+                    <Label Text="{Binding Position}" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                <Label Text="POSITION" TextColor="Red" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding CurrentLap}" TextColor="White" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                        <Label Text="/" TextColor="White" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                        <Label Text="{Binding TotalLaps}" TextColor="White" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                    <Label Text="LAPS" TextColor="Red" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="2">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="5">
+                    <Label Text="FL: " TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding FrontLeftTyreTemp}" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="ºC" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="5">
+                    <Label Text="FR: " TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding FrontRightTyreTemp}" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="ºC" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="5">
+                    <Label Text="RL: " TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding RearLeftTyreTemp}" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="ºC" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="5">
+                    <Label Text="RR: " TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding RearRightTyreTemp}" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                    <Label Text="ºC" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Small"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                    <Label Text="TYRE TEMP" TextColor="Yellow" 
+                        FontAttributes="Bold" 
+                        FontAutoScalingEnabled="True" 
+                        FontSize="Default"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="2">
+            <Label Text="NO INFO" TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontAutoScalingEnabled="True" 
+                    FontSize="Header"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+        </Border>
+    </Grid>
+    </Border>
+</ContentPage>

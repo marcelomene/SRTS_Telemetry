@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SRTS_Telemetry.MainPage">
+    <StackLayout>
+        <Frame Padding="15"
+               CornerRadius="5"
+               HasShadow="True"
+               Margin="5"
+               BorderColor="#E0E0E0">
+            <StackLayout Orientation="Vertical">
+                <StackLayout>
+                    <Label Text="Configurar conexão" FontSize="Subtitle" FontAttributes="Bold" Margin="5,0,0,10"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Placeholder="Porta local" WidthRequest="150" Keyboard="Numeric" HorizontalOptions="Start" Margin="5" Text="{Binding LocalPort}"/>
+                        <Entry Placeholder="Porta remota" WidthRequest="150" Keyboard="Numeric" HorizontalOptions="Start" Margin="5" Text="{Binding RemotePort}"/>
+                    </StackLayout>
+                    <Entry Placeholder="Endereço IP" WidthRequest="310" HorizontalOptions="Start" Margin="5" Text="{Binding RemoteIPAddress}"/>
+                </StackLayout>
+                <Button Text="Conectar" HeightRequest="50" Margin="5,35,0,0" Command="{Binding ConnectCommand}"/>
+                <Button Text="Desconectar" HeightRequest="50" Margin="5,35,0,0" Command="{Binding DisconnectCommand}"/>
+            </StackLayout>
+        </Frame>
+        <Frame Padding="15"
+           CornerRadius="5"
+           HasShadow="True"
+           Margin="5"
+           BorderColor="#E0E0E0">
+            <StackLayout>
+                <Label Text="Log" FontSize="Subtitle" FontAttributes="Bold" Margin="5,0,0,10"/>
+                <ScrollView>
+                    <Editor IsReadOnly="True"
+                        AutoSize="TextChanges"
+                        FontSize="14"
+                        Text="{Binding LogMessages}"/>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>
