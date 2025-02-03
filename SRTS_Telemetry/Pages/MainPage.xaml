@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SRTS_Telemetry.MainPage">
+             x:Class="SRTS_Telemetry.MainPage"
+             Padding="0">
     <StackLayout>
         <Frame Padding="15"
                CornerRadius="5"
@@ -17,8 +18,38 @@
                     </StackLayout>
                     <Entry Placeholder="Endereço IP" WidthRequest="310" HorizontalOptions="Start" Margin="5" Text="{Binding RemoteIPAddress}"/>
                 </StackLayout>
-                <Button Text="Conectar" HeightRequest="50" Margin="5,35,0,0" Command="{Binding ConnectCommand}"/>
-                <Button Text="Desconectar" HeightRequest="50" Margin="5,35,0,0" Command="{Binding DisconnectCommand}"/>
+                <Button Text="Conectar" Margin="5,35,0,0" Command="{Binding ConnectCommand}" HorizontalOptions="Start">
+                    <Button.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android" Value="310"/>
+                            <On Platform="iOS" Value="310"/>
+                            <On Platform="WinUI" Value="310"/>
+                        </OnPlatform>
+                    </Button.WidthRequest>
+                    <Button.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android" Value="50"/>
+                            <On Platform="iOS" Value="50"/>
+                            <On Platform="WinUI" Value="50"/>
+                        </OnPlatform>
+                    </Button.HeightRequest>
+                </Button>
+                <Button Text="Desconectar" Margin="5,35,0,0" Command="{Binding DisconnectCommand}" HorizontalOptions="Start">
+                    <Button.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android" Value="310"/>
+                            <On Platform="iOS" Value="310"/>
+                            <On Platform="WinUI" Value="310"/>
+                        </OnPlatform>
+                    </Button.WidthRequest>
+                    <Button.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android" Value="50"/>
+                            <On Platform="iOS" Value="50"/>
+                            <On Platform="WinUI" Value="50"/>
+                        </OnPlatform>
+                    </Button.HeightRequest>
+                </Button>
             </StackLayout>
         </Frame>
         <Frame Padding="15"

@@ -10,7 +10,7 @@
     Title="SRTS GT7 Telemetry">
 
     <TabBar>
-        <ShellContent Title="Home"
+        <ShellContent Title="Conexão"
                       Icon="home.png"
                       Route="home"
                       ContentTemplate="{DataTemplate local:MainPage}" />
