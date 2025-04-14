@@ -10,9 +10,6 @@ namespace SimRacingTelemetryLogger.Logger.GT7
 {
     public class GT7TelemetryPacket : TelemetryPacket
     {
-        public CarTelemetryPacket CarTelemetryPacket { get; set; }
-        public SessionTelemetryPacket SessionTelemetryPacket { get; set; }
-
         public GT7TelemetryPacket() { }
         public GT7TelemetryPacket(byte[] data)
             => TransformPacket(data);

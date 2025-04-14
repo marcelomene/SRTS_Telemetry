@@ -4,12 +4,13 @@ namespace SRTS_Telemetry.Pages;
 
 public partial class HudPage : ContentPage
 {
-
+    List<BoxView> rpmBoxViews;
     public HudPage()
 	{
 		InitializeComponent();
 		BindingContext = App.ViewModel;
-		App.ViewModel.SetControls(this.throttleBoxview, this.brakeBoxview);
+        rpmBoxViews = new() { rpm1, rpm2, rpm3, rpm4, rpm5, rpm6, rpm7, rpm8, rpm9, rpm10 };
+		App.ViewModel.SetControls(this.throttleBoxview, this.brakeBoxview, rpmBoxViews);
         DeviceDisplay.Current.MainDisplayInfoChanged += Current_MainDisplayInfoChanged;
 	}
 

@@ -24,6 +24,8 @@ namespace SimRacingTelemetryLogger.Logger
         protected CancellationTokenSource _loggingCancellationToken;
         protected CancellationTokenSource _processingCancellationToken;
         protected Action<TelemetryPacket> PacketReadyCallback;
+        private readonly bool _savePacketsFile;
+        private readonly string _filePath;
 
         public TelemetryLogger(int listeningPort)
         {
@@ -39,7 +41,8 @@ namespace SimRacingTelemetryLogger.Logger
         }
 
         public TelemetryLogger(int listeningPort, int remotePort, bool hasKeepAlive, 
-            bool sendStartSignal, byte[] keepAliveFrame, byte[] sendStartSignalFrame, string remoteIp, Action<TelemetryPacket> packetReadyCallback)
+            bool sendStartSignal, byte[] keepAliveFrame, byte[] sendStartSignalFrame, string remoteIp, Action<TelemetryPacket> packetReadyCallback, bool savePacketsFile,
+            string filePath = null)
         {
             ListeningPort = listeningPort;
             _udpClient = new UdpClient(ListeningPort);
@@ -54,6 +57,8 @@ namespace SimRacingTelemetryLogger.Logger
             RemoteIP = remoteIp;
             RemotePort = remotePort;
             PacketReadyCallback = packetReadyCallback;
+            _savePacketsFile = savePacketsFile;
+            _filePath = filePath;
         }
 
         public abstract TelemetryPacket ProcessTelemetryPacket(byte[] data);
@@ -87,8 +92,11 @@ namespace SimRacingTelemetryLogger.Logger
             int packetCount = 0;
             try
             {
-                if(SendStartSignal)
-                    _udpClient.Send(StartSignalFrame, StartSignalFrame.Length, RemoteIP, RemotePort);
+                //_udpClient.Connect(RemoteIP, RemotePort);
+
+                if (SendStartSignal)
+                    await _udpClient.SendAsync(StartSignalFrame, StartSignalFrame.Length, RemoteIP, RemotePort);
+                    //_udpClient.Send(StartSignalFrame, StartSignalFrame.Length, RemoteIP, RemotePort);
 
                 StartProcessingPackets();
 
@@ -125,11 +133,16 @@ namespace SimRacingTelemetryLogger.Logger
             {
                 _udpClient?.Close();
                 _processingCancellationToken?.Cancel();
+                _loggingCancellationToken?.Cancel();
             }
         }
 
         public void StopLogging()
-            => _loggingCancellationToken?.Cancel();
+        {
+            _loggingCancellationToken?.Cancel();
+            _processingCancellationToken?.Cancel();
+        }
+            
 
         public void Dispose()
         {

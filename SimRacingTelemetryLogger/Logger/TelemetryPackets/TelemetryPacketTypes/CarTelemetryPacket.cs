@@ -15,6 +15,8 @@ namespace SimRacingTelemetryLogger.Logger.TelemetryPackets.TelemetryPacketTypes
         public float FuelCapacity { get; set; }
         public float CurrentFuel { get; set; }
         public float Boost { get; set; }
+        public float PushToPass { get; set; }
+        public float PushToPassAvailable { get; set; }
         public float TyreDiameterFL { get; set; }
         public float TyreDiameterFR { get; set; }
         public float TyreDiameterRL { get; set; }

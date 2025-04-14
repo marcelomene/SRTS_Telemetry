@@ -18,6 +18,6 @@
         <ShellContent Title="HUD"
                       Icon="gauge.png"
                       Route="hud"
-                      ContentTemplate="{DataTemplate pages:HudPage}" />
+                      ContentTemplate="{DataTemplate pages:HudPage2}" />
     </TabBar>
 </Shell>

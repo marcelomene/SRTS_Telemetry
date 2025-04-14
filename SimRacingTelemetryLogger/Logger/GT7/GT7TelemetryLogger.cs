@@ -20,8 +20,13 @@ namespace SimRacingTelemetryLogger.Logger.GT7
             throw new NotSupportedException("GT7 Logger needs to inform remote IP address and keep alive information.");
         }
 
+        public GT7TelemetryLogger(int listeningPort, int remotePort, string remoteIp, Action<TelemetryPacket> packetReadyCallback, bool savePacketsFile, string filePath)
+            : base(listeningPort, remotePort, true, true, [KeepAliveByte], [KeepAliveByte], remoteIp, packetReadyCallback, savePacketsFile, filePath)
+        {
+        }
+
         public GT7TelemetryLogger(int listeningPort, int remotePort, string remoteIp, Action<TelemetryPacket> packetReadyCallback)
-            : base(listeningPort, remotePort, true, true, [KeepAliveByte], [KeepAliveByte], remoteIp, packetReadyCallback)
+            : base(listeningPort, remotePort, true, true, [KeepAliveByte], [KeepAliveByte], remoteIp, packetReadyCallback, false)
         {
         }
 
@@ -54,14 +59,8 @@ namespace SimRacingTelemetryLogger.Logger.GT7
         public override GT7TelemetryPacket ProcessTelemetryPacket(byte[] data)
         {
             GT7TelemetryPacket packet = null;
-            try
-            {
-                packet = GT7TelemetryPacket.CreatePacket(DecryptFrame(data));
-            }
-            catch (Exception e)
-            {
-                _log.Error(e.Message, e);
-            }
+            try { packet = GT7TelemetryPacket.CreatePacket(DecryptFrame(data)); }
+            catch (Exception e) { _log.Error(e.Message, e); }
             return packet;
         }
     }

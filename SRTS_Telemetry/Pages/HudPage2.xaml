@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SRTS_Telemetry.Pages.HudPage2"
+             xmlns:conv="clr-namespace:SRTS_Telemetry.Utils"
+             Title="HUD">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:BooleanInverterConverter x:Key="boolInverse"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout>
+        <Grid x:Name="MainGrid" BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- RPM INDICATOR-->
+            <Grid Grid.Row="0" ColumnSpacing="1" HeightRequest="25" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="1" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="2" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="3" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="4" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="5" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="6" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="7" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="8" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="9" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="10" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="11" StrokeShape="RoundRectangle 10"/>
+                <Border Grid.Column="12" StrokeShape="RoundRectangle 10"/>
+
+                <BoxView x:Name="rpm1" Grid.Column="0" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Green" Margin="2"/>
+                <BoxView x:Name="rpm2" Grid.Column="1" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Green" Margin="2"/>
+                <BoxView x:Name="rpm3" Grid.Column="2" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Green" Margin="2"/>
+                <BoxView x:Name="rpm4" Grid.Column="3" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Green" Margin="2"/>
+                <BoxView x:Name="rpm5" Grid.Column="4" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Red" Margin="2"/>
+                <BoxView x:Name="rpm6" Grid.Column="5" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Red" Margin="2"/>
+                <BoxView x:Name="rpm7" Grid.Column="6" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Red" Margin="2"/>
+                <BoxView x:Name="rpm8" Grid.Column="7" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Red" Margin="2"/>
+                <BoxView x:Name="rpm9" Grid.Column="8" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Blue" Margin="2"/>
+                <BoxView x:Name="rpm10" Grid.Column="9" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Blue" Margin="2"/>
+                <BoxView x:Name="rpm11" Grid.Column="10" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Blue" Margin="2"/>
+                <BoxView x:Name="rpm12" Grid.Column="11" CornerRadius="50" WidthRequest="20" HeightRequest="20" BackgroundColor="Blue" Margin="2"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                 <!--Far left column-->
+                <Grid Grid.Column="0" WidthRequest="20" Margin="5">
+                    <BoxView
+                        x:Name="throttleBoxview"
+                        Margin="0,0,0,0"
+                        HeightRequest="0"
+                        BackgroundColor="MediumBlue"/>
+                </Grid>
+                
+                 <!-- Far right column-->
+                <Grid Grid.Column="4" WidthRequest="20" Margin="5">
+                    <BoxView
+                        x:Name="brakeBoxview"
+                        Margin="0,0,0,0"
+                        HeightRequest="0"
+                        BackgroundColor="Red"/>
+                </Grid>
+
+                <!-- First column of data-->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <!-- First column, First Row-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Current lap -->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="White" Grid.Column="0" Margin="5">
+                            <StackLayout>
+                                <Label Text="CURRENT LAP" FontSize="Small" FontAttributes="Italic" Margin="5" HorizontalOptions="Center"/>
+                                <Label Text="{Binding CurrentLap}" TextColor="White" FontAttributes="Bold" FontSize="Small" Margin="5" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Border>
+
+                        <!-- Total laps-->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="White" Grid.Column="1" Margin="5">
+                            <StackLayout>
+                                <Label Text="TOTAL LAPS" FontSize="Small" FontAttributes="Italic" Margin="5" HorizontalOptions="Center"/>
+                                <Label Text="{Binding TotalLaps}" TextColor="White" FontAttributes="Bold" FontSize="Small" Margin="5" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+                    
+                    <!-- First column, Second Row-->
+                    <Grid Grid.Row="1">
+                        <!-- Position -->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="MediumBlue" Margin="5">
+                            <StackLayout>
+                                <Label Text="POSITION" FontSize="Small" FontAttributes="Italic" Margin="5" HorizontalOptions="Center"/>
+                                <Label Text="{Binding Position}" TextColor="White" FontAttributes="Bold" FontSize="Small" Margin="5" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- First column, Third Row-->
+
+                    <Grid Grid.Row="2">
+                        <!-- Last lap-->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="MediumPurple" Margin="5">
+                            <StackLayout>
+                                <Label Text="LAST LAP" FontSize="Small" FontAttributes="Italic" Margin="5" HorizontalOptions="Center"/>
+                                <Label Text="{Binding LastLap}" TextColor="White" FontAttributes="Bold" FontSize="Small" Margin="5" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- First column, Fourth Row-->
+                    <Grid Grid.Row="3">
+                        <!-- Best lap -->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="MediumPurple" Grid.Row="0" Margin="5">
+                            <StackLayout>
+                                <Label Text="BEST LAP" FontSize="Small" FontAttributes="Italic" Margin="5" HorizontalOptions="Center"/>
+                                <Label Text="{Binding BestLap}" TextColor="White" FontAttributes="Bold" FontSize="Small" Margin="5" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <!-- Second column of data-->
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Second column, First Row-->
+                    <Grid Grid.Row="0">
+                        <!-- Speed -->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="Green" Margin="5">
+                            <StackLayout>
+                                <Label Text="SPEED" FontSize="Small" FontAttributes="Bold,Italic" HorizontalOptions="Center" Margin="5"/>
+                                <Label Text="{Binding Speed}" TextColor="White" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" Margin="5"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- Second column, Second Row-->
+                    <Grid Grid.Row="1">
+                        <!-- Gear -->
+                        <Label Text="{Binding Gear}" TextColor="White" FontAttributes="Bold" FontSize="Header" Margin="5" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Second column, Thrid Row-->
+
+                    <Grid Grid.Row="2">
+                        <!-- RPM -->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="Red" Margin="5">
+                            <StackLayout>
+                                <Label Text="RPM" FontSize="Small" FontAttributes="Bold,Italic" HorizontalOptions="Center" Margin="5"/>
+                                <Label Text="{Binding RPM}" TextColor="White" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" Margin="5"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+                </Grid>
+                
+                <!-- Thrid column of data -->
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Third column, First Row-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- DRS Available-->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="Yellow" Margin="5" Grid.Column="0">
+                            <StackLayout>
+                                <Label Text="DRS/PTP AVAIL" FontSize="Micro" FontAttributes="Bold,Italic" HorizontalOptions="Center" Margin="5"/>
+                                <Label Text="YES" TextColor="Green" FontAttributes="Bold" IsVisible="{Binding PushToPassAvailable}"
+                                       FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                                
+                                <Label Text="NO" TextColor="Red" FontAttributes="Bold" IsVisible="{Binding PushToPassAvailable, Converter={StaticResource boolInverse}}"
+                                        FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                                <Label Text="Press DRS/PTP button" HorizontalOptions="Center" FontAttributes="Bold" IsVisible="{Binding PushToPassAvailable}"/>
+                            </StackLayout>
+                        </Border>
+
+                        <!-- DRS State -->
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="Pink" Margin="5" Grid.Column="1">
+                            <StackLayout>
+                                <Label Text="DRS/PTP STATE" FontSize="Small" FontAttributes="Bold,Italic" HorizontalOptions="Center" Margin="5"/>
+                                <Label Text="ON" TextColor="Green" FontAttributes="Bold" IsVisible="{Binding PushToPassState}"
+                                       FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                                <Label Text="OFF" TextColor="Red" FontAttributes="Bold" IsVisible="{Binding PushToPassState, Converter={StaticResource boolInverse}}"
+                                       FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- Third column, Second Row-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="MediumTurquoise" Margin="5" Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Label Text="TYRE TEMP" FontSize="Small" FontAttributes="Bold,Italic" HorizontalOptions="Center" Grid.Row="0" Margin="5"/>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <!-- Front tyres -->
+                                    <Label Text="F.L." TextColor="White" FontAttributes="Bold" Margin="5,0,0,0"
+                                        FontSize="Default" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"/>
+
+                                    <Label Text="{Binding FrontLeftTyreTemp}" TextColor="White" FontAttributes="Bold" Margin="0,0,5,0"
+                                        FontSize="Micro" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1"/>
+
+                                    <Label Text="F.R." TextColor="White" FontAttributes="Bold" Margin="5,0,0,0"
+                                        FontSize="Default" HorizontalOptions="StartAndExpand" Grid.Row="1" Grid.Column="0"/>
+
+                                    <Label Text="{Binding FrontRightTyreTemp}" TextColor="White" FontAttributes="Bold" Margin="0,0,5,0"
+                                        FontSize="Micro" HorizontalOptions="EndAndExpand" Grid.Row="1" Grid.Column="1" />
+                                    
+                                    <!-- Rear tyres -->
+                                    <Label Text="R.L." TextColor="White" FontAttributes="Bold" Margin="5,0,0,0"
+                                        FontSize="Default" HorizontalOptions="StartAndExpand" Grid.Row="2" Grid.Column="0"/>
+
+                                    <Label Text="{Binding RearLeftTyreTemp}" TextColor="White" FontAttributes="Bold" Margin="0,0,5,0"
+                                        FontSize="Micro" HorizontalOptions="EndAndExpand" Grid.Row="2" Grid.Column="1"/>
+
+                                    <Label Text="R.R." TextColor="White" FontAttributes="Bold" Margin="5,0,0,0"
+                                        FontSize="Default" HorizontalOptions="StartAndExpand" Grid.Row="3" Grid.Column="0" />
+
+                                    <Label Text="{Binding RearRightTyreTemp}" TextColor="White" FontAttributes="Bold" Margin="0,0,5,0"
+                                        FontSize="Micro" HorizontalOptions="EndAndExpand" Grid.Row="3" Grid.Column="1" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        
+                        <Border StrokeShape="RoundRectangle 10" StrokeThickness="2" Stroke="Orange" Margin="5" Grid.Column="1">
+                            <StackLayout>
+                                <StackLayout IsVisible="{Binding HasRevWarning, Converter={StaticResource boolInverse}}">
+                                    <Label Text="FUEL" FontSize="Small" FontAttributes="Bold,Italic" Margin="5" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding CurrentFuel}" TextColor="White" 
+                                    FontAttributes="Bold" 
+                                    FontAutoScalingEnabled="True" 
+                                    FontSize="Large"
+                                    HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout IsVisible="{Binding HasRevWarning}">
+                                    <Label Text="WARNING" FontSize="Small" FontAttributes="Bold,Italic" Margin="5" HorizontalOptions="Center"/>
+                                    <Label Text="REV WARNING" TextColor="Yellow" 
+                                            FontAttributes="Bold" 
+                                            FontAutoScalingEnabled="True" 
+                                            FontSize="Large"
+                                            HorizontalOptions="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
